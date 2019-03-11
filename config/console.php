@@ -27,6 +27,21 @@ $config = [
         ],
         'db' => $db,
     ],
+    'controllerMap' => [
+        'migrate' => [
+            'class' => yii\console\controllers\MigrateController::class,
+            'templateFile' => '@jamband/schemadump/template.php',
+        ],
+        'schemadump' => [
+            'class' => jamband\schemadump\SchemaDumpController::class,
+            'db' => [
+                'class' => yii\db\Connection::class,
+                'dsn' => 'mysql:host=db;dbname=avito',
+                'username' => 'root',
+                'password' => '2619192',
+            ],
+        ],
+    ],
     'params' => $params,
     /*
     'controllerMap' => [
