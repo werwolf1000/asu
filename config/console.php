@@ -36,8 +36,8 @@ $config = [
             'class' => jamband\schemadump\SchemaDumpController::class,
             'db' => [
                 'class' => yii\db\Connection::class,
-                'dsn' => 'mysql:host=db;dbname=avito',
-                'username' => 'root',
+                'dsn' => 'mysql:host=127.0.0.1;dbname=avito',
+                'username' => 'werwolf',
                 'password' => '2619192',
             ],
         ],
