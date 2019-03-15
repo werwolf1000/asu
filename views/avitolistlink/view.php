@@ -32,14 +32,76 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'image',
                 'value' => function($data){
-                    $images = '';
-                    foreach($data->avitoadverts[0]->advertimages as $img){
-                        $images .=   "<img src='http://".$img->host."/".$img->small."/".$img->image."'' alt=''>&nbsp;";
+
+                    $images = '<div class="slider">';
+
+                    foreach($data->avitoadverts[0]->advertimages as $k => $img){
+                        $images .= "<div class='item'>
+                                        <img src='http://".$img->host."/".$img->big."/".$img->image."' alt='".$img->image."'>
+                                        <div class='slideText'></div>
+                                    </div>";
                     }
+
+                    $images .= '<a class="prev" onclick="minusSlide()">&#10094;</a>';
+                    $images .= '<a class="next" onclick="plusSlide()">&#10095;</a>';
+
+                    $images .= '<div class="slider-dots">';
+                    foreach($data->avitoadverts[0]->advertimages as $k => $img){
+                        $images .= '<span class="slider-dots_item" onclick="currentSlide('.($k + 1).')"></span> ';
+                    }
+                    $images .= '</div>';
+
+
+                   /* $images = '<div id="myCarousel" class="carousel slide" data-ride="carousel">';
+
+                    $images .= ' <ol class="carousel-indicators">';
+                    foreach($data->avitoadverts[0]->advertimages as $k => $img){
+                        if(!$k){
+                            $images .= '<li data-target="#myCarousel" data-slide-to="'.$k.'" class="active"></li>';
+                        }else{
+                            $images .= '<li data-target="#myCarousel" data-slide-to="2" ></li>';
+                        }
+                    }
+
+                    //$images .= ' </ol>';
+                    $images .=  '  <ol class="carousel-indicators">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                                  </ol>';
+                    $images .= '<div class="carousel-inner">';
+                                
+                                
+
+                    foreach($data->avitoadverts[0]->advertimages as $k => $img){
+
+                        if(!$k){
+                            $images .=  " <div class='item active 1'>
+                                      <img src='http://".$img->host."/".$img->big."/".$img->image."' alt='".$k."'>
+                                    </div>";
+                        }
+                        else{
+                            $images .=  " <div class='item'>
+                                      <img src='http://".$img->host."/".$img->big."/".$img->image."' alt='".$k."'>
+                                    </div>";
+                        }
+                    }
+                    $images .=   '
+                                </div>
+                                <!-- Left and right controls -->
+                                  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                    <span class="sr-only">Previous</span>
+                                  </a>
+                                  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                    <span class="sr-only">Next</span>
+                                  </a>
+                                </div>';*/
                     return $images;
                 },
                 'label' => '',
-                'format' => 'html'
+                'format' => 'raw'
             ],
             [
                 'attribute' => 'name',
