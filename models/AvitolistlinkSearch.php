@@ -107,7 +107,7 @@ class AvitolistlinkSearch extends Avitolistlink
     public function search($params)
     {
 
-        $query = Avitolistlink::find()->joinWith(['avitoadverts']);;
+        $query = Avitolistlink::find()->joinWith(['avitoadverts']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

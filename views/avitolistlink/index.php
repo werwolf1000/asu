@@ -30,12 +30,33 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             [
+                'attribute' => '',
+                'value' => function($data){
+                    //var_dump($data->avitoadverts);
+                    $model = \app\models\Advertimages::find()->select(['host', 'image','small'])->where(['adver_id' => $data->avitoadverts[0]->id])->one();
+                    //var_dump($model['host']);
+                    return '<img src="http://'.$model['host'].'/'.$model['small'].'/'.$model['image'].'" alt="">';
+                },
+                'label' => '',
+                'format' => 'html'
+            ],
+            [
                 'attribute' => 'name',
                 'value' => function($data){
                     return "<a href='https://www.avito.ru".$data->link."'>$data->name</a>";
                 },
                 'label' => 'марка',
                 'format' => 'html'
+            ],
+
+            [
+                'attribute' => 'price',
+                'value' => function($data){
+
+                    return number_format($data->avitoadverts[0]->price, 0, '', ' ' );
+                },
+                'label' => 'Цена'
+
             ],
 
             [
@@ -145,20 +166,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'region:text:регион',
             [
+                'attribute' => 'dtcreate',
+                'value' => function($data){
+                    return $data->avitoadverts[0]->dtcreate;
+                },
+                'label' => 'Дата созд.'
+            ],
+/*            [
                 'attribute' => 'addr',
                 'value' => function($data){
                     return $data->avitoadverts[0]->addr;
                 },
                 'label' => 'адрес'
-            ],
-            [
-                'attribute' => 'price',
-                'value' => function($data){
-                    return $data->avitoadverts[0]->price;
-                },
-                'label' => 'Цена'
+            ],*/
 
-            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
