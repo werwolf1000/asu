@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     //var_dump($data->avitoadverts);
                     $model = \app\models\Advertimages::find()->select(['host', 'image','small'])->where(['adver_id' => $data->avitoadverts[0]->id])->one();
                     //var_dump($model['host']);
-                    return '<img src="http://'.$model['host'].'/'.$model['small'].'/'.$model['image'].'" alt="">';
+                    return '<a href="http://asu.localhost/avitolistlink/view?id='.$data->id.'"><img src="http://'.$model['host'].'/'.$model['small'].'/'.$model['image'].'" alt=""></a>';
                 },
                 'label' => 'фото',
                 'format' => 'html'
