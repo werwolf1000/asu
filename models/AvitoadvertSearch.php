@@ -18,7 +18,7 @@ class AvitoadvertSearch extends Avitoadvert
     {
         return [
             [['id', 'id_link'], 'integer'],
-            [['condition', 'owners', 'mileage', 'rudder', 'drive', 'color', 'engine_capacity', 'model', 'mark', 'year_of_issue', 'body_type', 'engine_type', 'transmission', 'engine_power', 'number_of_doors', 'vin', 'addr', 'dtcreate', 'timechange'], 'safe'],
+            [['condition', 'owners', 'mileage', 'rudder', 'drive', 'color', 'engine_capacity', 'model', 'mark', 'year_of_issue', 'body_type', 'engine_type', 'transmission', 'engine_power', 'number_of_doors', 'vin', 'addr', 'phone', 'dtcreate', 'timechange'], 'safe'],
             [['price'], 'number'],
         ];
     }
@@ -82,7 +82,8 @@ class AvitoadvertSearch extends Avitoadvert
             ->andFilterWhere(['like', 'engine_power', $this->engine_power])
             ->andFilterWhere(['like', 'number_of_doors', $this->number_of_doors])
             ->andFilterWhere(['like', 'vin', $this->vin])
-            ->andFilterWhere(['like', 'addr', $this->addr]);
+            ->andFilterWhere(['like', 'addr', $this->addr])
+            ->andFilterWhere(['like', 'phone', $this->phone]);
 
         return $dataProvider;
     }

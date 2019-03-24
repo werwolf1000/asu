@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     //var_dump($model['host']);
                     return '<img src="http://'.$model['host'].'/'.$model['small'].'/'.$model['image'].'" alt="">';
                 },
-                'label' => '',
+                'label' => 'фото',
                 'format' => 'html'
             ],
             [
@@ -163,6 +163,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $data->avitoadverts[0]->vin;
                 },
                 'label' => 'VIN'
+            ],
+            [
+                'attribute' => 'phone',
+                'value' => function($data){
+                    return $data->avitoadverts[0]->phone;
+                },
+                'label' => 'Телефон'
             ],
             'region:text:регион',
             [

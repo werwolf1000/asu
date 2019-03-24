@@ -30,6 +30,7 @@ class AvitolistlinkSearch extends Avitolistlink
     public $number_of_doors;
     public $vin;
     public $addr;
+    public $phone;
     /**
      * {@inheritdoc}
      */
@@ -62,7 +63,9 @@ class AvitolistlinkSearch extends Avitolistlink
                     'number_of_doors',
                     'vin',
                     'addr',
-                    'price'
+                    'price',
+                    'phone',
+                    'dtcreate'
                 ], 'safe'],
         ];
     }
@@ -129,7 +132,6 @@ class AvitolistlinkSearch extends Avitolistlink
         $query->andFilterWhere([
             'id' => $this->id,
             'year' => $this->year,
-            'dtcreate' => $this->dtcreate,
             'timechange' => $this->timechange,
             'process' => $this->process
         ]);
@@ -156,6 +158,8 @@ class AvitolistlinkSearch extends Avitolistlink
         $query->andFilterWhere(['like','avitoadvert.vin',$this->vin]);
         $query->andFilterWhere(['like','avitoadvert.addr',$this->addr]);
         $query->andFilterWhere(['like','avitoadvert.price', $this->price]);
+        $query->andFilterWhere(['like','avitoadvert.phone', $this->price]);
+        $query->andFilterWhere(['like','avitoadvert.dtcreate', $this->dtcreate]);
 
 
 

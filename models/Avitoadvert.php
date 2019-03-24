@@ -27,6 +27,7 @@ use Yii;
  * @property string $vin VIN или номер кузова
  * @property string $addr адрес
  * @property double $price
+ * @property double $phone
  * @property string $dtcreate
  * @property string $timechange
  *
@@ -52,7 +53,7 @@ class Avitoadvert extends \yii\db\ActiveRecord
             [['id_link'], 'integer'],
             [['price'], 'number'],
             [['dtcreate', 'timechange'], 'safe'],
-            [['condition', 'owners', 'mileage', 'rudder', 'drive', 'color', 'engine_capacity', 'model', 'mark', 'year_of_issue', 'body_type', 'engine_type', 'transmission', 'engine_power', 'number_of_doors', 'vin'], 'string', 'max' => 100],
+            [['condition', 'owners', 'mileage', 'rudder', 'drive', 'color', 'engine_capacity', 'model', 'mark', 'year_of_issue', 'body_type', 'engine_type', 'transmission', 'engine_power', 'number_of_doors', 'vin', 'phone'], 'string', 'max' => 100],
             [['addr'], 'string', 'max' => 500],
             [['id_link'], 'exist', 'skipOnError' => true, 'targetClass' => Avitolistlink::className(), 'targetAttribute' => ['id_link' => 'id']],
         ];
@@ -84,6 +85,7 @@ class Avitoadvert extends \yii\db\ActiveRecord
             'vin' => Yii::t('app', 'VIN или номер кузова'),
             'addr' => Yii::t('app', 'адрес'),
             'price' => Yii::t('app', 'Price'),
+            'phone' => Yii::t('app', 'Телефон'),
             'dtcreate' => Yii::t('app', 'Dtcreate'),
             'timechange' => Yii::t('app', 'Timechange'),
         ];
