@@ -2,8 +2,8 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=db;dbname=avito',
-    'username' => 'root',
+    'dsn' => 'mysql:host=db;127.0.0.1=avito',
+    'username' => 'werwolf',
     'password' => '2619192',
     'charset' => 'utf8',
 
