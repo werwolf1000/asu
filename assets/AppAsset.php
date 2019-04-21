@@ -23,7 +23,8 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-        'js/slider.js'
+        'js/slider.js',
+        'js/libs.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -31,6 +31,16 @@ class AvitolistlinkSearch extends Avitolistlink
     public $vin;
     public $addr;
     public $phone;
+    public $from_price;
+    public $to_price;
+    public $from_engine_capacity;
+    public $to_engine_capacity;
+    public $from_engine_power;
+    public $to_engine_power;
+    public $from_year_of_issue;
+    public $to_year_of_issue;
+
+
     /**
      * {@inheritdoc}
      */
@@ -42,7 +52,7 @@ class AvitolistlinkSearch extends Avitolistlink
                 [
                     'link',
                     'name',
-                    'year',
+                  //  'year',
                     'region',
                     'dtcreate',
                     'timechange',
@@ -52,20 +62,28 @@ class AvitolistlinkSearch extends Avitolistlink
                     'rudder',
                     'drive',
                     'color',
-                    'engine_capacity',
+                  //  'engine_capacity',
                     'model',
                     'mark',
                     'year_of_issue',
                     'body_type',
                     'engine_type',
                     'transmission',
-                    'engine_power',
+                   // 'engine_power',
                     'number_of_doors',
                     'vin',
                     'addr',
-                    'price',
+                    //'price',
+                    'from_price',
+                    'to_price',
                     'phone',
-                    'dtcreate'
+                    'dtcreate',
+                    'from_engine_capacity',
+                    'to_engine_capacity',
+                    'from_engine_power',
+                    'to_engine_power',
+                    'from_year_of_issue',
+                    'to_year_of_issue'
                 ], 'safe'],
         ];
     }
@@ -128,6 +146,7 @@ class AvitolistlinkSearch extends Avitolistlink
         }
 
 
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
@@ -158,10 +177,13 @@ class AvitolistlinkSearch extends Avitolistlink
         $query->andFilterWhere(['like','avitoadvert.vin',$this->vin]);
         $query->andFilterWhere(['like','avitoadvert.addr',$this->addr]);
         $query->andFilterWhere(['like','avitoadvert.price', $this->price]);
-        $query->andFilterWhere(['like','avitoadvert.phone', $this->price]);
+        $query->andFilterWhere(['between','avitoadvert.price',$this->from_price, $this->to_price]);
+        $query->andFilterWhere(['like','avitoadvert.phone', $this->phone]);
         $query->andFilterWhere(['like','avitoadvert.dtcreate', $this->dtcreate]);
 
-
+        $query->andFilterWhere(['between','avitoadvert.engine_capacity',$this->from_engine_capacity, $this->to_engine_capacity]);
+        $query->andFilterWhere(['between','avitoadvert.engine_power',$this->from_engine_power, $this->to_engine_power]);
+        $query->andFilterWhere(['between','avitoadvert.year_of_issue',$this->from_year_of_issue, $this->to_year_of_issue]);
 
         return $dataProvider;
     }

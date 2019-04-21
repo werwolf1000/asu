@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Avitoadvert;
 use Yii;
+use App;
 use app\models\Avitolistlink;
 use app\models\AvitolistlinkSearch;
 use yii\filters\AccessControl;
@@ -68,13 +69,19 @@ class AvitolistlinkController extends Controller
      */
     public function actionIndex()
     {
+        //var_dump(Yii::$app->request->get('p'));
         $searchModel = new AvitolistlinkSearch();
+
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+
+
+
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider
+            'dataProvider' => $dataProvider,
+            'get' => Yii::$app->request->queryParams
         ]);
     }
 
